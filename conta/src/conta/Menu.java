@@ -1,5 +1,6 @@
 package conta;
 
+import java.io.IOException;
 import java.util.Scanner;
 import conta.model.Conta;
 import conta.model.ContaCorrente;
@@ -16,10 +17,9 @@ public class Menu {
 		c1.visualizar();
 		c1.depositar(5000.0f);
 		c1.visualizar();
-     
-		
-		//Teste classe Conta Corrente
-		
+
+		// Teste classe Conta Corrente
+
 		ContaCorrente cc1 = new ContaCorrente(2, 123, 2, "Mariana", 15000.0f, 1000.0f);
 		Scanner leia = new Scanner(System.in);
 		cc1.visualizar();
@@ -27,22 +27,22 @@ public class Menu {
 		cc1.visualizar();
 		cc1.depositar(5000.0f);
 		cc1.visualizar();
-		
-		//Teste classe conta poupança
-		
-		ContaPoupanca cp1= new ContaPoupanca(3, 123, 2, "victor", 100000.0f, 15);
+
+		// Teste classe conta poupança
+
+		ContaPoupanca cp1 = new ContaPoupanca(3, 123, 2, "victor", 100000.0f, 15);
 		cp1.visualizar();
 		cp1.sacar(10000.0f);
 		cp1.visualizar();
 		cp1.depositar(5000.0f);
 		cp1.visualizar();
-		
 
 		int opcao;
 
 		while (true) {
 
-			System.out.println(Cores.TEXT_BLUE_BRIGHT + Cores.ANSI_BLACK_BACKGROUND + " *****************************************************");
+			System.out.println(Cores.TEXT_BLUE_BRIGHT + Cores.ANSI_BLACK_BACKGROUND
+					+ " *****************************************************");
 			System.out.println("                                                     ");
 			System.out.println("                BANCO DO BRAZIL COM Z                ");
 			System.out.println("                                                     ");
@@ -71,43 +71,51 @@ public class Menu {
 			}
 
 			switch (opcao) {
-				case 1:
-					System.out.println("Criar Conta\n\n");
+			case 1:
+				System.out.println("Criar Conta\n\n");
 
-					break;
-				case 2:
-					System.out.println("Listar todas as Contas\n\n");
+				break;
+			case 2:
+				System.out.println("Listar todas as Contas\n\n");
 
-					break;
-				case 3:
-					System.out.println("Consultar dados da Conta - por número\n\n");
+				break;
+			case 3:
+				System.out.println("Consultar dados da Conta - por número\n\n");
 
-					break;
-				case 4:
-					System.out.println("Atualizar dados da Conta\n\n");
+				break;
+			case 4:
+				System.out.println("Atualizar dados da Conta\n\n");
 
-					break;
-				case 5:
-					System.out.println("Apagar a Conta\n\n");
+				break;
+			case 5:
+				System.out.println("Apagar a Conta\n\n");
 
-					break;
-				case 6:
-					System.out.println("Saque\n\n");
+				break;
+			case 6:
+				System.out.println("Saque\n\n");
 
-					break;
-				case 7:
-					System.out.println("Depósito\n\n");
+				break;
+			case 7:
+				System.out.println("Depósito\n\n");
 
-					break;
-				case 8:
-					System.out.println("Transferência entre Contas\n\n");
+				break;
+			case 8:
+				System.out.println("Transferência entre Contas\n\n");
 
-					break;
-				default:
-					System.out.println("\nOpção Inválida!\n");
-					break;
+				break;
+			default:
+				System.out.println("\nOpção Inválida!\n");
+				break;
 			}
 		}
 	}
 
+	public static void keyPress() {
+		try {
+			System.out.println(Cores.TEXT_RESET + "\n\nPressione Enter para Continuar...");
+			System.in.read();
+		} catch (IOException e) {
+			System.out.println("Você pressionou uma tecla diferente de enter!");
+		}
+	}
 }
