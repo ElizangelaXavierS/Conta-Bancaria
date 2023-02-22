@@ -74,37 +74,47 @@ public class Menu {
 			case 1:
 				System.out.println("Criar Conta\n\n");
 
+				keyPress();
 				break;
 			case 2:
 				System.out.println("Listar todas as Contas\n\n");
 
+				keyPress();
 				break;
 			case 3:
 				System.out.println("Consultar dados da Conta - por número\n\n");
 
+				keyPress();
 				break;
 			case 4:
 				System.out.println("Atualizar dados da Conta\n\n");
 
+				keyPress();
 				break;
 			case 5:
 				System.out.println("Apagar a Conta\n\n");
 
+				keyPress();
 				break;
 			case 6:
 				System.out.println("Saque\n\n");
 
+				keyPress();
 				break;
 			case 7:
 				System.out.println("Depósito\n\n");
 
+				keyPress();
 				break;
 			case 8:
 				System.out.println("Transferência entre Contas\n\n");
 
+				keyPress();
 				break;
 			default:
 				System.out.println("\nOpção Inválida!\n");
+				
+				keyPress();
 				break;
 			}
 		}
