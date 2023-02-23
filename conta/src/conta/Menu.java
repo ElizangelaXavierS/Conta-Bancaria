@@ -37,7 +37,9 @@ public class Menu {
 		cp1.depositar(5000.0f);
 		cp1.visualizar();
 
-		int opcao;
+		int opcao, numero, agencia, tipo, aniversario;
+		float saldo,limite;
+		String titular;
 
 		while (true) {
 
@@ -73,6 +75,23 @@ public class Menu {
 			switch (opcao) {
 			case 1:
 				System.out.println("Criar Conta\n\n");
+				
+				System.out.println("Número de agencia: \n\n");
+				agencia = leia.nextInt();
+				
+				System.out.println("Nome do Titular: ");
+				leia.skip("\\R?");
+				titular = leia.nextLine();
+				
+				System.out.println("Tipo de Conta (1-CC/ 2-CP)\n\n");
+				tipo = leia.nextInt();
+				
+				System.out.println("Limite da conta corrente: \n\n");
+				saldo = leia.nextFloat();
+				
+				System.out.println("Aniversário da conta poupança: \n\n");
+				aniversario = leia.nextInt();
+				
 
 				keyPress();
 				break;
