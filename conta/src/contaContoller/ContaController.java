@@ -113,7 +113,6 @@ public int retornaTipo(int numero) {
 }
 
 
-	
-}
+
 
 
