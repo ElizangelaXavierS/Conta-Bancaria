@@ -10,35 +10,20 @@ import conta.util.Cores;
 public class Menu {
 
 	public static void main(String[] args) {
-		// Teste classe conta
-		Conta c1 = new Conta(1, 123, 1, "Adriana", 10000.0f);
-		c1.visualizar();
-		c1.sacar(12000.0f);
-		c1.visualizar();
-		c1.depositar(5000.0f);
-		c1.visualizar();
 
 		// Teste classe Conta Corrente
 
 		ContaCorrente cc1 = new ContaCorrente(2, 123, 2, "Mariana", 15000.0f, 1000.0f);
 		Scanner leia = new Scanner(System.in);
 		cc1.visualizar();
-		cc1.sacar(12000.0f);
-		cc1.visualizar();
-		cc1.depositar(5000.0f);
-		cc1.visualizar();
 
 		// Teste classe conta poupança
 
 		ContaPoupanca cp1 = new ContaPoupanca(3, 123, 2, "victor", 100000.0f, 15);
 		cp1.visualizar();
-		cp1.sacar(10000.0f);
-		cp1.visualizar();
-		cp1.depositar(5000.0f);
-		cp1.visualizar();
 
-		int opcao, numero, agencia, tipo, aniversario;
-		float saldo,limite;
+		int opcao, numero, agencia, tipo, aniversario, numeroDestino;
+		float saldo,limite, valor;
 		String titular;
 
 		while (true) {
@@ -83,16 +68,29 @@ public class Menu {
 				leia.skip("\\R?");
 				titular = leia.nextLine();
 				
-				System.out.println("Tipo de Conta (1-CC/ 2-CP)\n\n");
-				tipo = leia.nextInt();
+				do {
+					System.out.println("Tipo da Conta (1-CC / 2-CP): ");
+					tipo = leia.nextInt();
+				}while(tipo < 1 && tipo > 2);
 				
-				System.out.println("Limite da conta corrente: \n\n");
+				System.out.println("Saldo da Conta: ");
 				saldo = leia.nextFloat();
 				
-				System.out.println("Aniversário da conta poupança: \n\n");
-				aniversario = leia.nextInt();
+				switch(tipo) {
+				case 1 ->{
+					System.out.println("Limite da Conta Corrente: ");
+					limite = leia.nextFloat();
+					ContaCorrente cc = new ContaCorrente(0, agencia, tipo, titular, saldo, limite);
+					cc.visualizar();
+				}
+				case 2 ->{
+					System.out.println("Aniversário da Conta Poupança: ");
+					aniversario = leia.nextInt();
+					ContaPoupanca cp = new ContaPoupanca(0, agencia, tipo, titular, saldo, aniversario);
+					cp.visualizar();
+				}
+			}
 				
-
 				keyPress();
 				break;
 			case 2:
@@ -103,30 +101,95 @@ public class Menu {
 			case 3:
 				System.out.println("Consultar dados da Conta - por número\n\n");
 
+				System.out.println("Número da Conta: ");
+				numero = leia.nextInt();
+				
+
 				keyPress();
 				break;
 			case 4:
 				System.out.println("Atualizar dados da Conta\n\n");
 
+				System.out.println("Número da Conta: ");
+				numero = leia.nextInt();
+				
+				// Condicional para checar se a conta existe
+				
+				System.out.println("Número da Agencia: ");
+				agencia = leia.nextInt();
+				
+				System.out.println("Nome do Titular: ");
+				leia.skip("\\R?");
+				titular =  leia.nextLine();
+				
+				// Busca do tipo
+				tipo = 0;
+				
+				System.out.println("Saldo da Conta: ");
+				saldo = leia.nextFloat();
+				
+				switch(tipo) {
+					case 1 ->{
+						System.out.println("Limite da Conta Corrente: ");
+						limite = leia.nextFloat();
+						ContaCorrente cc = new ContaCorrente(0, agencia, tipo, titular, saldo, limite);
+						cc.visualizar();
+					}
+					case 2 ->{
+						System.out.println("Aniversário da Conta Poupança: ");
+						aniversario = leia.nextInt();
+						ContaPoupanca cp = new ContaPoupanca(0, agencia, tipo, titular, saldo, aniversario);
+						cp.visualizar();
+					}
+				}
 				keyPress();
 				break;
 			case 5:
 				System.out.println("Apagar a Conta\n\n");
 
+				System.out.println("Número da Conta: ");
+				numero = leia.nextInt();
+				
+				// Chamada para o Método Deletar
 				keyPress();
 				break;
 			case 6:
 				System.out.println("Saque\n\n");
 
+				System.out.println("Número da Conta: ");
+				numero = leia.nextInt();
+				
+				System.out.println("Valor do Saque: ");
+				valor = leia.nextFloat();
+				
+				// Chamada para o Método Sacar
 				keyPress();
 				break;
 			case 7:
 				System.out.println("Depósito\n\n");
-
+				
+				System.out.println("Número da Conta: ");
+				numero = leia.nextInt();
+				
+				System.out.println("Valor do Depósito: ");
+				valor = leia.nextFloat();
+				
+				// Chamada para o Método Depositar
 				keyPress();
 				break;
 			case 8:
 				System.out.println("Transferência entre Contas\n\n");
+
+				System.out.println("Número da Conta - Origem: ");
+				numero = leia.nextInt();
+				
+				System.out.println("Número da Conta - Destino: ");
+				numeroDestino = leia.nextInt();
+				
+				System.out.println("Valor da Transferência: ");
+				valor = leia.nextFloat();
+				
+				// Chamada para o Método Transferir
 
 				keyPress();
 				break;
